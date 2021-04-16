@@ -14,3 +14,13 @@ export const getGenres = async (): Promise<GenreResponseProps[] | undefined> => 
 
   return genres;
 }
+
+export const getMovies = async (): Promise<MovieProps[] | undefined> => {
+  const { data } = await api.get('/movies');
+
+  if (!data) return;
+
+  const movies = data as MovieProps[];
+
+  return movies;
+}
