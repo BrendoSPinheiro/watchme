@@ -1,13 +1,17 @@
-import { useEffect, useState } from "react";
-import { getGenres } from "../services/genresMovies";
+import { useEffect, useState } from 'react';
+import { getGenres } from '../services/genresMovies';
 
-import { Button } from "./Button";
+import { Button } from './Button';
 
 import '../styles/sidebar.scss';
 
 import { GenreResponseProps } from '../interfaces/globalInterfaces';
 
-export function SideBar() {
+type SideBarProps = {
+  handleChangeGenre: (genreId: number) => Promise<void>;
+}
+
+export function SideBar({ handleChangeGenre }: SideBarProps) {
   const [selectedGenreId, setSelectedGenreId] = useState(1);
   const [genres, setGenres] = useState<GenreResponseProps[]>([]);
 
@@ -18,8 +22,12 @@ export function SideBar() {
       if (!response) return;
 
       setGenres(response);
-    })()
+    })();
   }, []);
+
+  useEffect(() => {
+    handleChangeGenre(selectedGenreId);
+  }, [selectedGenreId, handleChangeGenre]);
 
   function handleClickButton(id: number) {
     setSelectedGenreId(id);
@@ -27,10 +35,13 @@ export function SideBar() {
 
   return (
     <nav className="sidebar">
-      <span>Watch<p>Me</p></span>
+      <span>
+        Watch
+        <p>Me</p>
+      </span>
 
       <div className="buttons-container">
-        {genres.map(genre => (
+        {genres.map((genre) => (
           <Button
             key={String(genre.id)}
             title={genre.title}

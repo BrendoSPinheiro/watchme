@@ -10,13 +10,13 @@ export const getGenres = async (): Promise<GenreResponseProps[] | undefined> => 
 
   if (!data) return;
 
-  const genres = data as GenreResponseProps[]
+  const genres = data as GenreResponseProps[];
 
   return genres;
-}
+};
 
 export const getGenreById = async (
-  genreId: number
+  genreId: number,
 ): Promise<GenreResponseProps | undefined> => {
   const { data } = await api.get(`/genres/${genreId}`);
 
@@ -25,16 +25,16 @@ export const getGenreById = async (
   const genre = data as GenreResponseProps;
 
   return genre;
-}
+};
 
 export const getMoviesByGenreId = async (
-  genreId: number
+  genreId: number,
 ): Promise<MovieProps[] | undefined> => {
-  const { data } = await api.get(`movies/?Genre_id=${genreId}`);
+  const { data } = await api.get(`/movies/?Genre_id=${genreId}`);
 
   if (!data) return;
 
   const movies = data as MovieProps[];
 
   return movies;
-}
+};
