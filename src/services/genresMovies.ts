@@ -30,7 +30,7 @@ export const getGenreById = async (
 export const getMoviesByGenreId = async (
   genreId: number
 ): Promise<MovieProps[] | undefined> => {
-  const { data } = await api.get(`/movies/${genreId}`);
+  const { data } = await api.get(`movies/?Genre_id=${genreId}`);
 
   if (!data) return;
 
