@@ -2,15 +2,12 @@ import { MovieCard } from './MovieCard';
 
 import '../styles/content.scss';
 
-import {
-  MovieProps,
-  GenreResponseProps,
-} from '../interfaces/globalInterfaces';
+import { MovieProps, GenreResponseProps } from '../interfaces/globalInterfaces';
 
 type ContentProps = {
-  movies: MovieProps[],
-  selectedGenre: GenreResponseProps,
-}
+  movies: MovieProps[];
+  selectedGenre: GenreResponseProps;
+};
 
 export function Content({ movies, selectedGenre }: ContentProps) {
   return (
@@ -18,9 +15,7 @@ export function Content({ movies, selectedGenre }: ContentProps) {
       <header>
         <span className="category">
           Categoria:
-          <span>
-            {selectedGenre.title}
-          </span>
+          <span>{selectedGenre.title}</span>
         </span>
       </header>
 

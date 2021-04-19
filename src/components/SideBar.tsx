@@ -9,7 +9,7 @@ import { GenreResponseProps } from '../interfaces/globalInterfaces';
 
 type SideBarProps = {
   handleChangeGenre: (genreId: number) => Promise<void>;
-}
+};
 
 export function SideBar({ handleChangeGenre }: SideBarProps) {
   const [selectedGenreId, setSelectedGenreId] = useState(1);
@@ -51,7 +51,6 @@ export function SideBar({ handleChangeGenre }: SideBarProps) {
           />
         ))}
       </div>
-
     </nav>
   );
 }

@@ -5,20 +5,14 @@ import { Content } from './components/Content';
 
 import './styles/global.scss';
 
-import {
-  getGenreById,
-  getMoviesByGenreId,
-} from './services/genresMovies';
+import { getGenreById, getMoviesByGenreId } from './services/genresMovies';
 
-import {
-  GenreResponseProps,
-  MovieProps,
-} from './interfaces/globalInterfaces';
+import { GenreResponseProps, MovieProps } from './interfaces/globalInterfaces';
 
 export function App() {
   const [movies, setMovies] = useState<MovieProps[]>([]);
   const [selectedGenre, setSelectedGenre] = useState<GenreResponseProps>(
-    {} as GenreResponseProps,
+    {} as GenreResponseProps
   );
 
   const handleChangeGenre = useCallback(async (genreId: number) => {

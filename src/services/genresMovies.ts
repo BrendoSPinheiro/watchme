@@ -1,11 +1,10 @@
 import { api } from './api';
 
-import {
-  GenreResponseProps,
-  MovieProps,
-} from '../interfaces/globalInterfaces';
+import { GenreResponseProps, MovieProps } from '../interfaces/globalInterfaces';
 
-export const getGenres = async (): Promise<GenreResponseProps[] | undefined> => {
+export const getGenres = async (): Promise<
+  GenreResponseProps[] | undefined
+> => {
   const { data } = await api.get('/genres');
 
   if (!data) return;
@@ -16,7 +15,7 @@ export const getGenres = async (): Promise<GenreResponseProps[] | undefined> => 
 };
 
 export const getGenreById = async (
-  genreId: number,
+  genreId: number
 ): Promise<GenreResponseProps | undefined> => {
   const { data } = await api.get(`/genres/${genreId}`);
 
@@ -28,7 +27,7 @@ export const getGenreById = async (
 };
 
 export const getMoviesByGenreId = async (
-  genreId: number,
+  genreId: number
 ): Promise<MovieProps[] | undefined> => {
   const { data } = await api.get(`/movies/?Genre_id=${genreId}`);
 
